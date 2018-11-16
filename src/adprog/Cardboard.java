@@ -12,16 +12,16 @@ package adprog;
 public abstract class Cardboard {
 
     private float widthInMeters, lengthInMeters, heightInMeters;
-    private int colour, type, grade;
+    private int numOfColour, numOfCardboard, grade;
     private boolean reinforcedBottom, reinforcedCornor, sealableTop;
 
-    public Cardboard(float newWidth, float newLength, float newHeight, int newColour, int newType, int newGrade, boolean newBottom, boolean newCornor, boolean newSealableTop) {
+    public Cardboard(float newWidth, float newLength, float newHeight, int newnumOfColour, int newNumOfCardboard, int newGrade, boolean newBottom, boolean newCornor, boolean newSealableTop) {
 
         widthInMeters = newWidth;
         lengthInMeters = newLength;
         heightInMeters = newHeight;
-        colour = newColour;
-        type = newType;
+        numOfColour = newnumOfColour;
+        numOfCardboard = newNumOfCardboard;
         grade = newGrade;
         reinforcedBottom = newBottom;
         reinforcedCornor = newCornor;
@@ -43,7 +43,7 @@ public abstract class Cardboard {
         String cardboardLength = String.valueOf(this.lengthInMeters);
         String cardboardWidth = String.valueOf(this.widthInMeters);
         String cardboardHeight = String.valueOf(this.heightInMeters);
-        String cardboardColour = String.valueOf(this.colour);
+        String cardboardColour = String.valueOf(this.numOfColour);
 
         String reinforcedBottom;
         if (this.reinforcedBottom) {
@@ -69,8 +69,8 @@ public abstract class Cardboard {
         double volume = this.calculate(this.lengthInMeters, this.widthInMeters, this.heightInMeters);
         double price = priceOfGradeCardboard(this.grade);
         double costOfCardboard = this.cost(volume, price, this.sealableTop);
-        String cardboardQuantity = String.valueOf(this.type);
-        double finalPrice = (costOfCardboard * this.type);
+        String cardboardQuantity = String.valueOf(this.numOfCardboard);
+        double finalPrice = (costOfCardboard * this.numOfCardboard);
         return new String[]{("Length Of Cardboard: " + cardboardLength), ("Width Of Cardbaord: " + cardboardWidth), ("Height Of CardBaord: " + cardboardHeight), ("Grade Of Cardboard: " + cardboardGrade), ("Number Of Colour: " + cardboardColour), reinforcedBottom, reinforcedCornor, sealableTop, ("Quantity: " + cardboardQuantity), "" + finalPrice};
     }
 
