@@ -71,7 +71,7 @@ public abstract class Cardboard {
         double costOfCardboard = this.cost(volume, price, this.sealableTop);
         String cardboardQuantity = String.valueOf(this.numOfCardboard);
         double finalPrice = (costOfCardboard * this.numOfCardboard);
-        return new String[]{("Length Of Cardboard: " + cardboardLength), ("Width Of Cardbaord: " + cardboardWidth), ("Height Of CardBaord: " + cardboardHeight), ("Grade Of Cardboard: " + cardboardGrade), ("Number Of Colour: " + cardboardColour), reinforcedBottom, reinforcedCornor, sealableTop, ("Quantity: " + cardboardQuantity), "" + finalPrice};
+        return new String[]{("Length Of Cardboard: " + cardboardLength), ("Width Of Cardbaord: " + cardboardWidth), ("Height Of CardBaord: " + cardboardHeight), /**("Grade Of Cardboard: " + cardboardGrade), ("Number Of Colour: " + cardboardColour), reinforcedBottom, reinforcedCornor, sealableTop,*/ ("Quantity: " + cardboardQuantity), "" + finalPrice};
     }
 
 
