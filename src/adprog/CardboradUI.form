@@ -6,8 +6,14 @@
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
       <Color blue="50" green="3e" red="2c" type="rgb"/>
     </Property>
+    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
+    </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
+  <AccessibilityProperties>
+    <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
+  </AccessibilityProperties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
@@ -32,14 +38,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="quantityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="quantityErrorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lengthLabel" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
-                                  <Component id="lengthErrorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lengthTextField" max="32767" attributes="0"/>
-                                  <Component id="quantityTextField" alignment="0" pref="140" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="lengthLabel" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
+                                      <Component id="lengthErrorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lengthTextField" max="32767" attributes="0"/>
+                                      <Component id="quantityTextField" alignment="0" pref="140" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="quantityLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -52,9 +60,13 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="widthErrorLabel" min="-2" max="-2" attributes="0"/>
                                           <Component id="widthTextField" min="-2" pref="140" max="-2" attributes="0"/>
+                                          <Component id="gradeComboBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="gradeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="colourComboBox" min="-2" max="-2" attributes="0"/>
                                           <Component id="heightErrorLabel" min="-2" max="-2" attributes="0"/>
                                           <Component id="heightTextField" min="-2" pref="140" max="-2" attributes="0"/>
                                       </Group>
@@ -68,12 +80,12 @@
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="submitButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
                               <Component id="submitErrorLabel" min="-2" pref="314" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="submitButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -105,9 +117,17 @@
                   <Component id="heightErrorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="quantityLabel" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="quantityLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gradeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="quantityTextField" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="quantityTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="gradeComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="colourComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
               <Component id="quantityErrorLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
@@ -125,6 +145,21 @@
         <Property name="text" type="java.lang.String" value="Width"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="lengthLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Length"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="heightLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Height"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="quantityLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quantity"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JTextField" name="lengthTextField">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enter Length"/>
@@ -134,25 +169,14 @@
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="lengthTextFieldKeyReleased"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lengthLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Length"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="widthTextField">
       <Properties>
         <Property name="text" type="java.lang.String" value="Enter Width"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="widthTextFieldMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="widthTextFieldActionPerformed"/>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="widthTextFieldKeyReleased"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="heightLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Height"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="heightTextField">
       <Properties>
@@ -162,11 +186,6 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="heightTextFieldMouseClicked"/>
         <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="heightTextFieldKeyReleased"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="quantityLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Quantity"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="quantityTextField">
       <Properties>
@@ -207,8 +226,49 @@
         <Property name="text" type="java.lang.String" value="Submit"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="submitButtonMouseExited"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="gradeComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="1"/>
+            <StringItem index="1" value="2"/>
+            <StringItem index="2" value="3"/>
+            <StringItem index="3" value="4"/>
+            <StringItem index="4" value="5"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="gradeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Grade"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="colourComboBox">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="No Colour"/>
+            <StringItem index="1" value="One Colour"/>
+            <StringItem index="2" value="Two Colours"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Colour"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

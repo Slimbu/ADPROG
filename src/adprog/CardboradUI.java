@@ -9,23 +9,24 @@ import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.*;
+import java.awt.Color;
 
 /**
  *
  * @author pc
  */
-public class newCardboard extends javax.swing.JFrame {
+public class CardboradUI extends javax.swing.JFrame {
 
     /**
      * Creates new form newCardboard
      */
-    public newCardboard() {
+    public CardboradUI() {
         initComponents();
         lengthErrorLabel.setText(" ");
         widthErrorLabel.setText(" ");
         heightErrorLabel.setText(" ");
         quantityErrorLabel.setText(" ");
-      
+
     }
 
     /**
@@ -38,12 +39,12 @@ public class newCardboard extends javax.swing.JFrame {
     private void initComponents() {
 
         widthLabel = new javax.swing.JLabel();
-        lengthTextField = new javax.swing.JTextField();
         lengthLabel = new javax.swing.JLabel();
-        widthTextField = new javax.swing.JTextField();
         heightLabel = new javax.swing.JLabel();
-        heightTextField = new javax.swing.JTextField();
         quantityLabel = new javax.swing.JLabel();
+        lengthTextField = new javax.swing.JTextField();
+        widthTextField = new javax.swing.JTextField();
+        heightTextField = new javax.swing.JTextField();
         quantityTextField = new javax.swing.JTextField();
         lengthErrorLabel = new javax.swing.JLabel();
         widthErrorLabel = new javax.swing.JLabel();
@@ -51,12 +52,23 @@ public class newCardboard extends javax.swing.JFrame {
         quantityErrorLabel = new javax.swing.JLabel();
         submitErrorLabel = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
+        gradeComboBox = new javax.swing.JComboBox<>();
+        gradeLabel = new javax.swing.JLabel();
+        colourComboBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(44, 62, 80));
+        setForeground(java.awt.Color.black);
         setResizable(false);
 
         widthLabel.setText("Width");
+
+        lengthLabel.setText("Length");
+
+        heightLabel.setText("Height");
+
+        quantityLabel.setText("Quantity");
 
         lengthTextField.setText("Enter Length");
         lengthTextField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -70,17 +82,10 @@ public class newCardboard extends javax.swing.JFrame {
             }
         });
 
-        lengthLabel.setText("Length");
-
         widthTextField.setText("Enter Width");
         widthTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 widthTextFieldMouseClicked(evt);
-            }
-        });
-        widthTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                widthTextFieldActionPerformed(evt);
             }
         });
         widthTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -88,8 +93,6 @@ public class newCardboard extends javax.swing.JFrame {
                 widthTextFieldKeyReleased(evt);
             }
         });
-
-        heightLabel.setText("Height");
 
         heightTextField.setText("Enter Height");
         heightTextField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -102,8 +105,6 @@ public class newCardboard extends javax.swing.JFrame {
                 heightTextFieldKeyReleased(evt);
             }
         });
-
-        quantityLabel.setText("Quantity");
 
         quantityTextField.setText("Enter Quantity");
         quantityTextField.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -128,11 +129,24 @@ public class newCardboard extends javax.swing.JFrame {
         submitErrorLabel.setText("                      ");
 
         submitButton.setText("Submit");
+        submitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                submitButtonMouseExited(evt);
+            }
+        });
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonActionPerformed(evt);
             }
         });
+
+        gradeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+
+        gradeLabel.setText("Grade");
+
+        colourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Colour", "One Colour", "Two Colours" }));
+
+        jLabel1.setText("Colour");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,14 +157,15 @@ public class newCardboard extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(quantityLabel)
                             .addComponent(quantityErrorLabel)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lengthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lengthErrorLabel)
-                                    .addComponent(lengthTextField)
-                                    .addComponent(quantityTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lengthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lengthErrorLabel)
+                                        .addComponent(lengthTextField)
+                                        .addComponent(quantityTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                                    .addComponent(quantityLabel))
                                 .addGap(86, 86, 86)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -160,9 +175,13 @@ public class newCardboard extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(widthErrorLabel)
-                                            .addComponent(widthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(widthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(gradeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(gradeLabel))
                                         .addGap(88, 88, 88)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(colourComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(heightErrorLabel)
                                             .addComponent(heightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addContainerGap(44, Short.MAX_VALUE))
@@ -170,11 +189,11 @@ public class newCardboard extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(submitButton)
-                                .addGap(22, 22, 22))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(submitErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(164, 164, 164))))))
+                                .addGap(164, 164, 164))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(submitButton)
+                                .addGap(22, 22, 22))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,9 +215,15 @@ public class newCardboard extends javax.swing.JFrame {
                     .addComponent(widthErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(heightErrorLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(quantityLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(quantityLabel)
+                    .addComponent(gradeLabel)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gradeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(colourComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addComponent(quantityErrorLabel)
                 .addGap(98, 98, 98)
@@ -207,6 +232,8 @@ public class newCardboard extends javax.swing.JFrame {
                 .addComponent(submitButton)
                 .addGap(27, 27, 27))
         );
+
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -239,6 +266,7 @@ public class newCardboard extends javax.swing.JFrame {
             evt.consume();
             submitButton.doClick();
         }
+
     }//GEN-LAST:event_lengthTextFieldKeyReleased
 
     private void widthTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_widthTextFieldKeyReleased
@@ -255,6 +283,7 @@ public class newCardboard extends javax.swing.JFrame {
             evt.consume();
             submitButton.doClick();
         }
+
     }//GEN-LAST:event_heightTextFieldKeyReleased
 
     private void quantityTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextFieldKeyReleased
@@ -262,23 +291,39 @@ public class newCardboard extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             evt.consume();
             submitButton.doClick();
-        }        
+        }
+
     }//GEN-LAST:event_quantityTextFieldKeyReleased
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-        if ((!lengthErrorLabel.getText().equals("") || (!widthErrorLabel.getText().equals("") || heightErrorLabel.getText().equals("") || quantityErrorLabel.getText().equals("")))) {
-            submitErrorLabel.setText("Cardboard not created! Fix your inputs.");
-        } else if ((lengthTextField.getText().equals("Enter Length") || (widthTextField.getText().equals("Enter width")) || (heightTextField.getText().equals("Enter height")) || quantityTextField.getText().equals("Enter Quantity"))) {
+
+        if ((lengthTextField.getText().equals("Enter Length") || (widthTextField.getText().equals("Enter width")) || (heightTextField.getText().equals("Enter height")) || quantityTextField.getText().equals("Enter Quantity"))) {
             submitErrorLabel.setText("Cardboard not created! Please fill in the fields.");
         } else if ((lengthTextField.getText().equals("") || widthTextField.getText().equals("") || lengthTextField.getText().equals("") || quantityTextField.getText().equals(""))) {
             submitErrorLabel.setText("");
+        } else {
+
+            int gradeSelect = Integer.parseInt((String) gradeComboBox.getSelectedItem());
+            String colourStringSelect = (String) colourComboBox.getSelectedItem();
+
+            int colourSelect = 0;
+            if (colourStringSelect.equals("One Colour")) {
+                colourSelect = 1;
+            } else if (colourStringSelect.equals("Two Colours")) {
+                colourSelect = 2;
+            }
         }
     }//GEN-LAST:event_submitButtonActionPerformed
 
-    private void widthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_widthTextFieldActionPerformed
+    private void submitButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_widthTextFieldActionPerformed
+        submitButton.setBackground(Color.WHITE);
+    }//GEN-LAST:event_submitButtonMouseExited
+
+  
+
+   
 
     /**
      * @param args the command line arguments
@@ -297,28 +342,33 @@ public class newCardboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(newCardboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CardboradUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(newCardboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CardboradUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(newCardboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CardboradUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(newCardboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CardboradUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new newCardboard().setVisible(true);
+                new CardboradUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> colourComboBox;
+    private javax.swing.JComboBox<String> gradeComboBox;
+    private javax.swing.JLabel gradeLabel;
     private javax.swing.JLabel heightErrorLabel;
     private javax.swing.JLabel heightLabel;
     private javax.swing.JTextField heightTextField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lengthErrorLabel;
     private javax.swing.JLabel lengthLabel;
     private javax.swing.JTextField lengthTextField;

@@ -15,8 +15,10 @@ public class ADPROG {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        newCardboard test = new newCardboard();
-        test.main();
+        
+        CardboradUI test = new CardboradUI();
+        test.setVisible(true);
+        
     }
     
 }
