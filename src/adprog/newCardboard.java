@@ -68,6 +68,7 @@ public class newCardboard extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(44, 62, 80));
 
         widthLabel.setText("Width");
 
@@ -75,11 +76,6 @@ public class newCardboard extends javax.swing.JFrame {
         lengthTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lengthTextFieldMouseClicked(evt);
-            }
-        });
-        lengthTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lengthTextFieldActionPerformed(evt);
             }
         });
         lengthTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -96,11 +92,6 @@ public class newCardboard extends javax.swing.JFrame {
                 widthTextFieldMouseClicked(evt);
             }
         });
-        widthTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                widthTextFieldActionPerformed(evt);
-            }
-        });
         widthTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 widthTextFieldKeyReleased(evt);
@@ -115,11 +106,6 @@ public class newCardboard extends javax.swing.JFrame {
                 heightTextFieldMouseClicked(evt);
             }
         });
-        heightTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                heightTextFieldActionPerformed(evt);
-            }
-        });
         heightTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 heightTextFieldKeyReleased(evt);
@@ -132,11 +118,6 @@ public class newCardboard extends javax.swing.JFrame {
         quantityTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 quantityTextFieldMouseClicked(evt);
-            }
-        });
-        quantityTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                quantityTextFieldActionPerformed(evt);
             }
         });
         quantityTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -154,6 +135,11 @@ public class newCardboard extends javax.swing.JFrame {
         quantityErrorLabel.setText("QuantityErrorLabel");
 
         submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -282,23 +268,16 @@ public class newCardboard extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_quantityTextFieldKeyReleased
 
-  
-
-    private void lengthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lengthTextFieldActionPerformed
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lengthTextFieldActionPerformed
-
-    private void widthTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_widthTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_widthTextFieldActionPerformed
-
-    private void heightTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_heightTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_heightTextFieldActionPerformed
-
-    private void quantityTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_quantityTextFieldActionPerformed
+        if ((!lengthErrorLabel.getText().equals("") || (!widthErrorLabel.getText().equals("") || heightErrorLabel.getText().equals("") || quantityErrorLabel.getText().equals("")))) {
+            submitErrorLabel.setText("Cardboard not created! Fix your inputs.");
+        } else if ((lengthTextField.getText().equals("Enter Length") || (widthTextField.getText().equals("Enter width")) || (heightTextField.getText().equals("Enter height")) || quantityTextField.getText().equals("Enter Quantity"))) {
+            submitErrorLabel.setText("Cardboard not created! Please fill in the fields.");
+        } else if ((lengthTextField.getText().equals("") || widthTextField.getText().equals("") || lengthTextField.getText().equals("") || quantityTextField.getText().equals(""))) {
+            submitErrorLabel.setText("");
+        }
+    }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
      * @param args the command line arguments
