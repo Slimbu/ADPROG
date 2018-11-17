@@ -6,14 +6,15 @@
 package adprog;
 
 /**
- * Type 4 cardboard
+ * Type 5 cardboard
  * 
  * @author pc
  */
-public class CardboardIV extends NewCardboard {
+
+public class CardboardTypeV extends NewCardboard {
     
     /**
-     * Creates a new Type 4 Pipe
+     * Creates a new Type 5 Pipe
      * 
      * @param length
      * @param width
@@ -21,10 +22,10 @@ public class CardboardIV extends NewCardboard {
      * @param grade
      * @param sealableTop
      */
-
-    public CardboardIV(double length, double width, double height, int grade,boolean sealableTop) {
-        super(length, width, height, grade, 2, true, false, sealableTop);
-        priceMultiplier = 0.15 + 0.13;
+    
+    public CardboardTypeV(double length, double width, double height, int grade, boolean sealableTop) {
+        super(length, width, height, grade, 2, true, true, sealableTop);
+        priceMultiplier = 0.15 + 0.13 + 0.12;
     }
-   
+    
 }

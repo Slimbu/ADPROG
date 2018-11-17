@@ -5,28 +5,41 @@
  */
 package adprog;
 
-import java.awt.event.KeyEvent;
-import java.text.DecimalFormat;
+import java.util.ArrayList;
+import javax.swing.*;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.table.*;
 import java.awt.Color;
 
+import java.awt.HeadlessException;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.IOException;
+import java.text.DecimalFormat;
+
 /**
+ * Main UI Class
  *
  * @author pc
  */
 public class CardboradUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form newCardboard
+     * Creates new form CardboradUI
      */
+    private final ArrayList<OrderCardboard> orderList = new ArrayList<>();
+    private double total, newLength, newWidth, newHeight;
+    private String cost;
+    private int numOfGrade, typeOfCardboard, numOfColour, quantity;
+    private boolean reinforcedBottom, reinforcedCornor, sealableTop;
+    private NewCardboard currentCardboard;
+    private OrderCardboard newOrder;
+    private final CardboardValidator checkCardboard = new CardboardValidator();
+
     public CardboradUI() {
         initComponents();
-        lengthErrorLabel.setText(" ");
-        widthErrorLabel.setText(" ");
-        heightErrorLabel.setText(" ");
-        quantityErrorLabel.setText(" ");
-
+        groupRadioButton();
     }
 
     /**
@@ -38,115 +51,225 @@ public class CardboradUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        widthLabel = new javax.swing.JLabel();
-        lengthLabel = new javax.swing.JLabel();
-        heightLabel = new javax.swing.JLabel();
-        quantityLabel = new javax.swing.JLabel();
-        lengthTextField = new javax.swing.JTextField();
-        widthTextField = new javax.swing.JTextField();
-        heightTextField = new javax.swing.JTextField();
-        quantityTextField = new javax.swing.JTextField();
-        lengthErrorLabel = new javax.swing.JLabel();
-        widthErrorLabel = new javax.swing.JLabel();
-        heightErrorLabel = new javax.swing.JLabel();
-        quantityErrorLabel = new javax.swing.JLabel();
-        submitErrorLabel = new javax.swing.JLabel();
-        submitButton = new javax.swing.JButton();
-        gradeComboBox = new javax.swing.JComboBox<>();
-        gradeLabel = new javax.swing.JLabel();
-        colourComboBox = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        lengthTextField = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        noColour = new javax.swing.JRadioButton();
+        oneColour = new javax.swing.JRadioButton();
+        twoColour = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        widthTextField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        bottomBox = new javax.swing.JCheckBox();
+        cornorBox = new javax.swing.JCheckBox();
+        sealableTopBox = new javax.swing.JCheckBox();
+        heightTextField = new javax.swing.JTextField();
+        comboGrade = new javax.swing.JComboBox<>();
+        gradeLabel = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        quantityTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        helpBtn = new javax.swing.JButton();
+        basketList = new java.awt.List();
+        jLabel6 = new javax.swing.JLabel();
+        editBtn = new javax.swing.JButton();
+        totalBtn = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        priceInTotal = new javax.swing.JLabel();
+        deleteBtn = new javax.swing.JButton();
+        resetBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(44, 62, 80));
-        setForeground(java.awt.Color.black);
-        setResizable(false);
 
-        widthLabel.setText("Width");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        lengthLabel.setText("Length");
+        jLabel1.setText("Length");
 
-        heightLabel.setText("Height");
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        quantityLabel.setText("Quantity");
+        noColour.setSelected(true);
+        noColour.setText("No Colour");
 
-        lengthTextField.setText("Enter Length");
-        lengthTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lengthTextFieldMouseClicked(evt);
-            }
-        });
-        lengthTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                lengthTextFieldKeyReleased(evt);
-            }
-        });
+        oneColour.setText("One Colour");
 
-        widthTextField.setText("Enter Width");
-        widthTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                widthTextFieldMouseClicked(evt);
-            }
-        });
-        widthTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                widthTextFieldKeyReleased(evt);
-            }
-        });
+        twoColour.setText("Two Colours");
 
-        heightTextField.setText("Enter Height");
-        heightTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                heightTextFieldMouseClicked(evt);
-            }
-        });
-        heightTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                heightTextFieldKeyReleased(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(noColour)
+                .addGap(36, 36, 36)
+                .addComponent(oneColour)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(twoColour)
+                .addGap(22, 22, 22))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(noColour)
+                    .addComponent(oneColour)
+                    .addComponent(twoColour))
+                .addContainerGap())
+        );
 
-        quantityTextField.setText("Enter Quantity");
-        quantityTextField.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                quantityTextFieldMouseClicked(evt);
-            }
-        });
-        quantityTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                quantityTextFieldKeyReleased(evt);
-            }
-        });
+        oneColour.getAccessibleContext().setAccessibleDescription("12% extra cost");
+        twoColour.getAccessibleContext().setAccessibleDescription("");
 
-        lengthErrorLabel.setText("LengthErrorLabel");
+        jLabel2.setText("Width");
 
-        widthErrorLabel.setText("WidthErrorLabel");
+        jLabel3.setText("Height");
 
-        heightErrorLabel.setText("HeightErrorLabel");
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        quantityErrorLabel.setText("QuantityErrorLabel");
+        bottomBox.setText("Reinforced Bottom");
 
-        submitErrorLabel.setText("                      ");
+        cornorBox.setText("Reinforced Cornor");
 
-        submitButton.setText("Submit");
-        submitButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                submitButtonMouseExited(evt);
-            }
-        });
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
-            }
-        });
+        sealableTopBox.setText("Sealable Top");
 
-        gradeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bottomBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cornorBox)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(sealableTopBox)
+                .addGap(31, 31, 31))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bottomBox)
+                    .addComponent(cornorBox)
+                    .addComponent(sealableTopBox))
+                .addContainerGap())
+        );
+
+        comboGrade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
         gradeLabel.setText("Grade");
 
-        colourComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No Colour", "One Colour", "Two Colours" }));
+        jLabel7.setText("Quantity");
 
-        jLabel1.setText("Colour");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(widthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(heightTextField))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboGrade, 0, 40, Short.MAX_VALUE)
+                            .addComponent(gradeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(10, 10, 10)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(widthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(heightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(gradeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        jPanel2.getAccessibleContext().setAccessibleName("Additional");
+        jPanel2.getAccessibleContext().setAccessibleParent(jPanel2);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        jLabel5.setText("FlexBox");
+
+        helpBtn.setText("Help");
+        helpBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Your basket");
+
+        editBtn.setText("Edit");
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
+
+        totalBtn.setText("Total");
+        totalBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Total: £");
+
+        priceInTotal.setText("0");
+        priceInTotal.setToolTipText("Total cost");
+        priceInTotal.setName("priceInTotal"); // NOI18N
+
+        deleteBtn.setText("Delete");
+
+        resetBtn.setText("Reset");
+        resetBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,175 +278,299 @@ public class CardboradUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(quantityErrorLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(lengthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lengthErrorLabel)
-                                        .addComponent(lengthTextField)
-                                        .addComponent(quantityTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
-                                    .addComponent(quantityLabel))
-                                .addGap(86, 86, 86)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(widthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(161, 161, 161)
-                                        .addComponent(heightLabel))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(widthErrorLabel)
-                                            .addComponent(widthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(gradeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(gradeLabel))
-                                        .addGap(88, 88, 88)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1)
-                                            .addComponent(colourComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(heightErrorLabel)
-                                            .addComponent(heightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addContainerGap(44, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(submitErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(164, 164, 164))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(submitButton)
-                                .addGap(22, 22, 22))))))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(helpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(deleteBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editBtn)
+                        .addGap(8, 8, 8))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(resetBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(totalBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(priceInTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))
+                    .addComponent(basketList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(2, 2, 2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(helpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(widthLabel)
-                    .addComponent(lengthLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(heightLabel))
+                    .addComponent(jLabel6)
+                    .addComponent(editBtn)
+                    .addComponent(deleteBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(basketList, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(widthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(heightTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lengthTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lengthErrorLabel)
-                    .addComponent(widthErrorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(heightErrorLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quantityLabel)
-                    .addComponent(gradeLabel)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(quantityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(gradeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(colourComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(quantityErrorLabel)
-                .addGap(98, 98, 98)
-                .addComponent(submitErrorLabel)
-                .addGap(191, 191, 191)
-                .addComponent(submitButton)
-                .addGap(27, 27, 27))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(resetBtn)
+                        .addComponent(totalBtn))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(priceInTotal))
+                        .addContainerGap())))
         );
 
-        getAccessibleContext().setAccessibleDescription("");
+        getAccessibleContext().setAccessibleName("Cardboard Boxes");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void lengthTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lengthTextFieldMouseClicked
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
         // TODO add your handling code here:
-        lengthTextField.setText(" ");
-    }//GEN-LAST:event_lengthTextFieldMouseClicked
-
-    private void widthTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_widthTextFieldMouseClicked
-        // TODO add your handling code here:
-        widthTextField.setText(" ");
-    }//GEN-LAST:event_widthTextFieldMouseClicked
-
-    private void heightTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_heightTextFieldMouseClicked
-        // TODO add your handling code here:
-        heightTextField.setText(" ");
-    }//GEN-LAST:event_heightTextFieldMouseClicked
-
-    private void quantityTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quantityTextFieldMouseClicked
-        // TODO add your handling code here:
-        quantityTextField.setText(" ");
-    }//GEN-LAST:event_quantityTextFieldMouseClicked
-
-
-    private void lengthTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lengthTextFieldKeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            submitButton.doClick();
+        try {
+            BufferedImage myImg = ImageIO.read(new File("Information.png"));
+            ImageIcon icon = new ImageIcon(myImg);
+            JLabel label = new JLabel(icon);
+            JOptionPane.showMessageDialog((null), label);
+        } catch (IOException | HeadlessException exRef) {
+            JOptionPane.showMessageDialog(null, exRef);
         }
+    }//GEN-LAST:event_helpBtnActionPerformed
 
-    }//GEN-LAST:event_lengthTextFieldKeyReleased
-
-    private void widthTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_widthTextFieldKeyReleased
+    private void totalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalBtnActionPerformed
         // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            submitButton.doClick();
-        }
-    }//GEN-LAST:event_widthTextFieldKeyReleased
+        if (getInputs()) {
+            typeOfCardboard = checkCardboard.check(numOfGrade, numOfColour, reinforcedBottom, reinforcedCornor);
+            if (typeOfCardboard != 0) {
+                chooseCardboard(typeOfCardboard);                                       //initialize the current cardboard
+                newOrder = new OrderCardboard(currentCardboard, quantity);
+                cost = new DecimalFormat("0.00").format(newOrder.getOrderPrice());
 
-    private void heightTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_heightTextFieldKeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            submitButton.doClick();
-        }
+                //yes or no option messaage box
+                JDialog.setDefaultLookAndFeelDecorated(true);
+                int response = JOptionPane.showConfirmDialog(null, "You are requred a grade" + typeOfCardboard + ".This cardboard will cost £" + cost + ".Would you like to add this to your basket?", "Add to basket",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
-    }//GEN-LAST:event_heightTextFieldKeyReleased
-
-    private void quantityTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityTextFieldKeyReleased
-        // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            evt.consume();
-            submitButton.doClick();
-        }
-
-    }//GEN-LAST:event_quantityTextFieldKeyReleased
-
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        // TODO add your handling code here:
-
-        if ((lengthTextField.getText().equals("Enter Length") || (widthTextField.getText().equals("Enter width")) || (heightTextField.getText().equals("Enter height")) || quantityTextField.getText().equals("Enter Quantity"))) {
-            submitErrorLabel.setText("Cardboard not created! Please fill in the fields.");
-        } else if ((lengthTextField.getText().equals("") || widthTextField.getText().equals("") || lengthTextField.getText().equals("") || quantityTextField.getText().equals(""))) {
-            submitErrorLabel.setText("");
-        } else {
-
-            int gradeSelect = Integer.parseInt((String) gradeComboBox.getSelectedItem());
-            String colourStringSelect = (String) colourComboBox.getSelectedItem();
-
-            int colourSelect = 0;
-            if (colourStringSelect.equals("One Colour")) {
-                colourSelect = 1;
-            } else if (colourStringSelect.equals("Two Colours")) {
-                colourSelect = 2;
+                if (response == JOptionPane.YES_OPTION) {
+                    addToBasket();
+                }
+            } else {
+                msg("Your option choice does not create a cardboard of a valid grade");
             }
         }
-    }//GEN-LAST:event_submitButtonActionPerformed
+    }//GEN-LAST:event_totalBtnActionPerformed
 
-    private void submitButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseExited
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
-        submitButton.setBackground(Color.WHITE);
-    }//GEN-LAST:event_submitButtonMouseExited
+        int index = basketList.getSelectedIndex();
 
-  
+        //if a item is selected 
+        if (validSelected() == true) {
+            OrderCardboard listOrder = orderList.get(index);
+            NewCardboard listCardboard = listOrder.getCardboard();
 
-   
+            lengthTextField.setText(Double.toString(listCardboard.getCardboardLength()));
+            widthTextField.setText(Double.toString(listCardboard.getCardboardWidth()));
+            heightTextField.setText(Double.toString(listCardboard.getCardboardHeight()));
+            quantityTextField.setText(Integer.toString(listOrder.getQuantity()));
+
+            comboGrade.setSelectedIndex(listCardboard.getCardboardGrade() - 1);
+
+            switch (listCardboard.getCardboardColour()) {
+                case 0:
+                    noColour.setSelected(true);
+                    break;
+                case 1:
+                    oneColour.setSelected(true);
+                default:
+                    twoColour.setSelected(true);
+                    break;
+            }
+
+        }
+    }//GEN-LAST:event_editBtnActionPerformed
+
+    private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
+        // TODO add your handling code here:
+        JDialog.setDefaultLookAndFeelDecorated(true);
+        int response = JOptionPane.showConfirmDialog(null, "Order placed"
+                + " Are you sure you want to reset", "Reset",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (response == JOptionPane.YES_OPTION) {
+            resetInput();
+            
+            basketList.removeAll();
+            orderList.clear();
+            
+            priceInTotal.setText("0");
+        }
+    }//GEN-LAST:event_resetBtnActionPerformed
+
+    private void updatePrice() {
+
+        total = 0;
+
+        //each cardboard in list add price 
+        for (OrderCardboard xOrder : orderList) {
+            total += xOrder.getOrderPrice();
+        }
+
+        //update cost
+        String totalCost = new DecimalFormat("0.00").format(total);
+        priceInTotal.setText(totalCost);
+    }
+
+    private void addToBasket() {
+        newOrder = new OrderCardboard(currentCardboard, quantity);
+        orderList.add(newOrder);
+
+        //updateTotal();
+        String firstItem;                                                               //list the item
+        firstItem = ("Type:" + typeOfCardboard + " " + newOrder.valuesToString());
+        basketList.add(firstItem);                                                      //add to the list 
+        resetInput();
+    }
+
+    private boolean getInputs() {
+
+        double boardLength = 0, boardWidth = 0, boardHeight = 0;
+        int boardQuantity = 0;
+
+        //gets values. Catches and display error if invalid
+        boolean numberFormats = true;
+        try {
+            boardLength = Double.parseDouble(lengthTextField.getText());
+        } catch (NumberFormatException e) {
+            msg("Length should be a number");
+            numberFormats = false;
+        }
+        try {
+            boardWidth = Double.parseDouble(widthTextField.getText());
+        } catch (NumberFormatException e) {
+            msg("Width Should be a number");
+            numberFormats = false;
+        }
+        try {
+            boardHeight = Double.parseDouble(heightTextField.getText());
+        } catch (NumberFormatException e) {
+            msg("Height should be a number");
+            numberFormats = false;
+        }
+        try {
+            boardQuantity = Integer.parseInt(quantityTextField.getText());
+        } catch (NumberFormatException e) {
+            msg("Quantity should be natural numbers");
+            numberFormats = false;
+        }
+
+        if (numberFormats) {
+
+            //sets attributes to valid mumbers
+            newLength = boardLength;
+            newWidth = boardWidth;
+            newHeight = boardHeight;
+            quantity = boardQuantity;
+
+            //get cardboard grade
+            numOfGrade = comboGrade.getSelectedIndex() + 1;
+
+            //get button values
+            if (noColour.isSelected()) {
+                numOfColour = 0;
+            } else if (oneColour.isSelected()) {
+                numOfColour = 1;
+            } else {
+                numOfColour = 2;
+            }
+
+            //get check box value
+            reinforcedBottom = bottomBox.isSelected();
+            reinforcedCornor = cornorBox.isSelected();
+            sealableTop = sealableTopBox.isSelected();
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
+    private void chooseCardboard(int typeOfCardboard) {
+
+        switch (typeOfCardboard) {
+            case 1:
+                currentCardboard = new CardboardTypeI(newLength, newWidth, newHeight, numOfGrade, sealableTop);
+                break;
+            case 2:
+                currentCardboard = new CardboardTypeII(newLength, newWidth, newHeight, numOfGrade, sealableTop);
+                break;
+            case 3:
+                currentCardboard = new CardboardTypeIII(newLength, newWidth, newHeight, numOfGrade, sealableTop);
+                break;
+            case 4:
+                currentCardboard = new CardboardTypeIV(newLength, newWidth, newHeight, numOfGrade, sealableTop);
+                break;
+            case 5:
+                currentCardboard = new CardboardTypeV(newLength, newWidth, newHeight, numOfGrade, sealableTop);
+                break;
+        }
+    }
+
+    private void msg(String str) {
+        //display message box
+        JOptionPane.showMessageDialog(null, str);
+    }
+
+    private boolean validSelected() {
+
+        boolean valid = false;
+        int index = basketList.getSelectedIndex();
+
+        if (index != -1) {
+            valid = true;
+        } else if (orderList.isEmpty()) {
+            msg("You don't have any items on your list");
+        } else {
+            msg("Plese select an item");
+        }
+        return valid;
+    }
+
+    private void resetInput() {
+
+        //sets to default value
+        comboGrade.setSelectedIndex(0);
+        lengthTextField.setText("");
+        widthTextField.setText("");
+        heightTextField.setText("");
+        quantityTextField.setText("");
+
+        //
+        bottomBox.setSelected(false);
+        cornorBox.setSelected(false);
+        sealableTopBox.setSelected(false);
+
+        //sets it to default
+        noColour.setSelected(true);
+    }
+
+    private void groupRadioButton() {
+        ButtonGroup group = new ButtonGroup();
+        group.add(noColour);
+        group.add(oneColour);
+        group.add(twoColour);
+    }
 
     /**
      * @param args the command line arguments
@@ -339,18 +586,25 @@ public class CardboradUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CardboradUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CardboradUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CardboradUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CardboradUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CardboradUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CardboradUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CardboradUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CardboradUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -362,27 +616,34 @@ public class CardboradUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> colourComboBox;
-    private javax.swing.JComboBox<String> gradeComboBox;
+    private java.awt.List basketList;
+    private javax.swing.JCheckBox bottomBox;
+    private javax.swing.JComboBox<String> comboGrade;
+    private javax.swing.JCheckBox cornorBox;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton editBtn;
     private javax.swing.JLabel gradeLabel;
-    private javax.swing.JLabel heightErrorLabel;
-    private javax.swing.JLabel heightLabel;
     private javax.swing.JTextField heightTextField;
+    private javax.swing.JButton helpBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lengthErrorLabel;
-    private javax.swing.JLabel lengthLabel;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField lengthTextField;
-    private javax.swing.JLabel quantityErrorLabel;
-    private javax.swing.JLabel quantityLabel;
+    private javax.swing.JRadioButton noColour;
+    private javax.swing.JRadioButton oneColour;
+    private javax.swing.JLabel priceInTotal;
     private javax.swing.JTextField quantityTextField;
-    private javax.swing.JButton submitButton;
-    private javax.swing.JLabel submitErrorLabel;
-    private javax.swing.JLabel widthErrorLabel;
-    private javax.swing.JLabel widthLabel;
+    private javax.swing.JButton resetBtn;
+    private javax.swing.JCheckBox sealableTopBox;
+    private javax.swing.JButton totalBtn;
+    private javax.swing.JRadioButton twoColour;
     private javax.swing.JTextField widthTextField;
     // End of variables declaration//GEN-END:variables
-
-    void main() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

@@ -18,7 +18,7 @@ public class ADPROG {
         
         CardboradUI test = new CardboradUI();
         test.setVisible(true);
-        
+        test.setTitle("FlexBox");
     }
     
 }

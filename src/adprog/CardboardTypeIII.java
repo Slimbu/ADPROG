@@ -10,7 +10,7 @@ package adprog;
  * 
  * @author pc
  */
-public class CardboardIII extends NewCardboard {
+public class CardboardTypeIII extends NewCardboard {
     
     /**
      * Creates a new Type 3 Pipe
@@ -21,7 +21,7 @@ public class CardboardIII extends NewCardboard {
      * @param sealableTop
      */
     
-    public CardboardIII(double length, double width, double height, int grade, boolean sealableTop) {
+    public CardboardTypeIII(double length, double width, double height, int grade, boolean sealableTop) {
         super(length, width, height, grade, 2, false, false, sealableTop);
         priceMultiplier = 0.15;
     }
