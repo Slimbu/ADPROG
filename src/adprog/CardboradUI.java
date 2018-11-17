@@ -39,7 +39,7 @@ public class CardboradUI extends javax.swing.JFrame {
 
     public CardboradUI() {
         initComponents();
-        groupRadioButton();
+       
     }
 
     /**
