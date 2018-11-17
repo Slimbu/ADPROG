@@ -82,6 +82,8 @@ public class CardboradUI extends javax.swing.JFrame {
         resetBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setBackground(new java.awt.Color(250, 250, 250));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -296,9 +298,9 @@ public class CardboradUI extends javax.swing.JFrame {
                         .addComponent(totalBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(priceInTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(priceInTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
                     .addComponent(basketList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -360,7 +362,7 @@ public class CardboradUI extends javax.swing.JFrame {
 
                 //yes or no option messaage box
                 JDialog.setDefaultLookAndFeelDecorated(true);
-                int response = JOptionPane.showConfirmDialog(null, "You are requred a grade" + typeOfCardboard + ".This cardboard will cost £" + cost + ".Would you like to add this to your basket?", "Add to basket",
+                int response = JOptionPane.showConfirmDialog(null, "You grade type is" + typeOfCardboard + ". This cardboard will cost £" + cost + ". Would you like to add this to your basket?", "Add to basket",
                         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
                 if (response == JOptionPane.YES_OPTION) {
@@ -369,6 +371,7 @@ public class CardboradUI extends javax.swing.JFrame {
             } else {
                 msg("Your option choice does not create a cardboard of a valid grade");
             }
+            updatePrice();
         }
     }//GEN-LAST:event_totalBtnActionPerformed
 
@@ -415,6 +418,7 @@ public class CardboradUI extends javax.swing.JFrame {
             orderList.clear();
             
             priceInTotal.setText("0");
+            updatePrice();
         }
     }//GEN-LAST:event_resetBtnActionPerformed
 
