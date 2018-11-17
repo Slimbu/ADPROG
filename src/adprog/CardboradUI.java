@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import java.awt.Color;
 
 import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
@@ -37,6 +36,9 @@ public class CardboradUI extends javax.swing.JFrame {
     private OrderCardboard newOrder;
     private final CardboardValidator checkCardboard = new CardboardValidator();
 
+    /**
+     *
+     */
     public CardboradUI() {
         initComponents();
        
@@ -82,6 +84,7 @@ public class CardboradUI extends javax.swing.JFrame {
         resetBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FlexBox");
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(250, 250, 250));
 
@@ -193,7 +196,7 @@ public class CardboradUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 399, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(comboGrade, 0, 40, Short.MAX_VALUE)
