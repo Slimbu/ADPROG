@@ -268,6 +268,11 @@ public class CardboradUI extends javax.swing.JFrame {
         priceInTotal.setName("priceInTotal"); // NOI18N
 
         deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         resetBtn.setText("Reset");
         resetBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -374,7 +379,7 @@ public class CardboradUI extends javax.swing.JFrame {
             } else {
                 msg("Your option choice does not create a cardboard of a valid grade");
             }
-            updatePrice();
+            totalPrice();
         }
     }//GEN-LAST:event_totalBtnActionPerformed
 
@@ -421,11 +426,22 @@ public class CardboradUI extends javax.swing.JFrame {
             orderList.clear();
             
             priceInTotal.setText("0");
-            updatePrice();
+            totalPrice();
         }
     }//GEN-LAST:event_resetBtnActionPerformed
 
-    private void updatePrice() {
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+        int index = basketList.getSelectedIndex();
+        if (validSelected() == true) {
+            basketList.remove(index);
+            orderList.remove(index);
+            totalPrice();
+            
+        }
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void totalPrice() {
 
         total = 0;
 
