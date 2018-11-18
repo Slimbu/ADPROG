@@ -24,6 +24,9 @@ public abstract class NewCardboard {
     
     private double cardboardPrice;
     
+    /**
+     *
+     */
     protected double priceMultiplier;
     
     /**

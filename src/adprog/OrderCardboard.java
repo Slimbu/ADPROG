@@ -77,7 +77,7 @@ public class OrderCardboard {
     /**
      * sets a new cardboard
      *
-     * @return cardboard
+     * @param cardboard
      */
     public void setCardboard(NewCardboard cardboard) {
         orderCardboard = cardboard;
