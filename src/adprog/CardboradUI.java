@@ -41,7 +41,7 @@ public class CardboradUI extends javax.swing.JFrame {
      */
     public CardboradUI() {
         initComponents();
-        groupRadioButton();
+        radioButton();
        
     }
 
@@ -590,7 +590,7 @@ public class CardboradUI extends javax.swing.JFrame {
         noColour.setSelected(true);
     }
 
-    private void groupRadioButton() {
+    private void radioButton() {
         ButtonGroup group = new ButtonGroup();
         group.add(noColour);
         group.add(oneColour);
