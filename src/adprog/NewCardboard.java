@@ -57,7 +57,7 @@ public abstract class NewCardboard {
      */
     private void calculatePrice () {
         /**  2*((w*l)+(l*h)+(h*w))  */
-        double [] prices = {0.5, 0.65, 0.82, 0.98, 1.5};
+        double [] prices = {0.55, 0.65, 0.82, 0.98, 1.5};
         double surfaceArea = 2 * ((cardboardWidth * cardboardLength) + (cardboardLength * cardboardHeight) + (cardboardHeight * cardboardWidth)); 
         double totalPrice = surfaceArea * prices[cardboardGrade-1];
         cardboardPrice = totalPrice + (totalPrice * priceMultiplier);
