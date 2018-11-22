@@ -41,6 +41,7 @@ public class CardboradUI extends javax.swing.JFrame {
      */
     public CardboradUI() {
         initComponents();
+        groupRadioButton();
        
     }
 
@@ -107,11 +108,11 @@ public class CardboradUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(noColour)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(oneColour)
-                .addGap(32, 32, 32)
+                .addGap(35, 35, 35)
                 .addComponent(twoColour)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
