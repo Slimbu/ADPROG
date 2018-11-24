@@ -95,7 +95,7 @@ public class CardboradUI extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jLabel1.setText("Length");
+        jLabel1.setText("Length -");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -133,9 +133,9 @@ public class CardboradUI extends javax.swing.JFrame {
         oneColour.getAccessibleContext().setAccessibleDescription("12% extra cost");
         twoColour.getAccessibleContext().setAccessibleDescription("");
 
-        jLabel2.setText("Width");
+        jLabel2.setText("Width -");
 
-        jLabel3.setText("Height");
+        jLabel3.setText("Height -");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -173,7 +173,7 @@ public class CardboradUI extends javax.swing.JFrame {
 
         gradeLabel.setText("Grade");
 
-        jLabel7.setText("Quantity");
+        jLabel7.setText("Quantity -");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -188,9 +188,9 @@ public class CardboradUI extends javax.swing.JFrame {
                         .addComponent(lengthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(widthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
+                        .addGap(46, 46, 46)
                         .addComponent(jLabel3))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -208,7 +208,7 @@ public class CardboradUI extends javax.swing.JFrame {
                         .addGap(4, 4, 4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(28, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -532,7 +532,7 @@ public class CardboradUI extends javax.swing.JFrame {
         try {
             boardQuantity = Integer.parseInt(quantityTextField.getText());
         } catch (NumberFormatException e) {
-            msg("Quantity should be natural numbers");
+            msg("Quantity should be whole numbers");
             numberFormats = false;
         }
 

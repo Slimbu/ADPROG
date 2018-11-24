@@ -39,21 +39,21 @@ public class OrderCardboard {
         String options = "";
 
         if (orderCardboard.isCardboardReinforcedBottom()) {
-            options += "Reinforced Bottom, ";
+            options += "Reinforced Bottom ";
         }
         if (orderCardboard.isCardboardReinforcedCornor()) {
-            options += "Reinforced Cornor, ";
+            options += "Reinforced Cornor ";
         }
         if (orderCardboard.isCardboardSealableTop()) {
-            options += "Sealable Top, ";
+            options += "Sealable Top ";
         }
         if (options.isEmpty()) {
-            options = "None, ";
+            options = "None ";
         }
 
-        str = "Cardboard Grade: " + orderCardboard.getCardboardGrade() + " \nLength: " + orderCardboard.getCardboardLength() + " Width: " + orderCardboard.getCardboardWidth()
-                + " Height: " + orderCardboard.getCardboardHeight() + " Colour: " + orderCardboard.getCardboardColour() + " Options: " + options
-                + " Qantity: " + orderedQuantity + " Cost: £" + cost;
+        str = " || " + "Cardboard Grade: " + orderCardboard.getCardboardGrade() + " || " + "Length: " + orderCardboard.getCardboardLength() + " || " + "Width: " + orderCardboard.getCardboardWidth()
+                + " || " + "Height: " + orderCardboard.getCardboardHeight() + " || " + "Colour: " + orderCardboard.getCardboardColour() + " || " + "Options: " + options
+                + " || " + "Qantity: " + orderedQuantity + " || " + "Cost: £" + cost;
         return str;
     }
 
