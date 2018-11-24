@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package adprog;
 
 /**
- *abstract cardboard object
- * superclass for all cardboard
+ * Abstract cardboard object
+ * Superclass for all cardboard
  * 
  * @author UP811334
  */
@@ -24,9 +19,6 @@ public abstract class NewCardboard {
     
     private double cardboardPrice;
     
-    /**
-     *
-     */
     protected double priceMultiplier;
     
     /**

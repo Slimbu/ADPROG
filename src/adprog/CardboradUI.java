@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package adprog;
 
 import java.util.ArrayList;
@@ -20,12 +15,12 @@ import java.text.DecimalFormat;
 /**
  * Main UI Class
  *
- * @author pc
+ * @author @UP811334
  */
 public class CardboradUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form CardboradUI
+     * 
      */
     private final ArrayList<OrderCardboard> orderList = new ArrayList<>();
     private double total, newLength, newWidth, newHeight;
@@ -37,14 +32,14 @@ public class CardboradUI extends javax.swing.JFrame {
     private final CardboardValidator checkCardboard = new CardboardValidator();
 
     /**
-     *
+     * Creates new form CardboradUI
      */
     public CardboradUI() {
         
         initComponents();
         radioButton();
 
-        //icon 
+        //set icon 
         ImageIcon img = new ImageIcon("cardboardBox.png");
         setIconImage(img.getImage());
     }
@@ -353,6 +348,12 @@ public class CardboradUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Picture for help 
+     * 
+     * @param evt
+     */
+    
     private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
         // TODO add your handling code here:
         try {
@@ -365,6 +366,12 @@ public class CardboradUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_helpBtnActionPerformed
 
+    /**
+     * If valid print out total outcome 
+     * 
+     * @param evt
+     */
+    
     private void totalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalBtnActionPerformed
         // TODO add your handling code here:
         if (getInputs() && validInput()) {
@@ -389,6 +396,12 @@ public class CardboradUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_totalBtnActionPerformed
 
+    /**
+     * Allow to edit selected item
+     * 
+     * @param evt
+     */
+    
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
         int index = basketList.getSelectedIndex();
@@ -419,6 +432,12 @@ public class CardboradUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_editBtnActionPerformed
 
+    /**
+     * Resets by clearing all input fields
+     * 
+     * @param evt
+     */
+    
     private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
         // TODO add your handling code here:
         JDialog.setDefaultLookAndFeelDecorated(true);
@@ -436,6 +455,12 @@ public class CardboradUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_resetBtnActionPerformed
 
+    /**
+     * Deletes the selected order
+     * 
+     * @param evt
+     */
+    
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
         int index = basketList.getSelectedIndex();
@@ -447,6 +472,9 @@ public class CardboradUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
+    /**
+     * Checks for valid input  
+     */
     private boolean validInput() {
 
         boolean lengthChecker, widthChecker, heightChecker, quantityChecker;
@@ -461,6 +489,14 @@ public class CardboradUI extends javax.swing.JFrame {
         
     }
 
+    /**
+     * Checks for numbers within range
+     * 
+     * @param name length, width, height, quantity
+     * @param testValue input
+     * @param min minimum value
+     * @param max maximum value 
+     */
     private boolean rangeChecker(String name, double testValue, double min, double max) {
 
         String errorMsg = name + " ";
@@ -477,7 +513,10 @@ public class CardboradUI extends javax.swing.JFrame {
         msg(errorMsg);
         return false;
     }
-
+    
+    /**
+     * Calculate the total price
+     */
     private void totalPrice() {
 
         total = 0;
@@ -492,6 +531,9 @@ public class CardboradUI extends javax.swing.JFrame {
         priceInTotal.setText(totalCost);
     }
 
+    /**
+     * Add items to basket
+     */
     private void addToBasket() {
 
         newOrder = new OrderCardboard(currentCardboard, quantity);
@@ -504,6 +546,9 @@ public class CardboradUI extends javax.swing.JFrame {
         resetInput();
     }
 
+    /**
+     * Get input if valid 
+     */
     private boolean getInputs() {
 
         double boardLength = 0, boardWidth = 0, boardHeight = 0;
@@ -567,6 +612,9 @@ public class CardboradUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *  Initialize cardboard 
+     */
     private void chooseCardboard(int typeOfCardboard) {
 
         switch (typeOfCardboard) {
@@ -588,11 +636,17 @@ public class CardboradUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Display message box  
+     */
     private void msg(String str) {
         //display message box
         JOptionPane.showMessageDialog(null, str);
     }
 
+    /**
+     * Select valid order   
+     */
     private boolean validSelected() {
 
         boolean valid = false;
@@ -608,6 +662,9 @@ public class CardboradUI extends javax.swing.JFrame {
         return valid;
     }
 
+    /**
+     * Resets every fields to default
+     */
     private void resetInput() {
 
         //sets to default value
@@ -626,6 +683,9 @@ public class CardboradUI extends javax.swing.JFrame {
         noColour.setSelected(true);
     }
 
+    /**
+     * select for color 
+     */
     private void radioButton() {
         ButtonGroup group = new ButtonGroup();
         group.add(noColour);
