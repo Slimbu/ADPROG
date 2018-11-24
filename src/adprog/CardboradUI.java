@@ -41,8 +41,8 @@ public class CardboradUI extends javax.swing.JFrame {
      */
     public CardboradUI() {
         initComponents();
-        groupRadioButton();
-       
+        radioButton();
+
     }
 
     /**
@@ -389,7 +389,7 @@ public class CardboradUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         int index = basketList.getSelectedIndex();
 
-        //if a item is selected 
+        //if a item is selected
         if (validSelected() == true) {
             OrderCardboard listOrder = orderList.get(index);
             NewCardboard listCardboard = listOrder.getCardboard();
@@ -423,10 +423,10 @@ public class CardboradUI extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (response == JOptionPane.YES_OPTION) {
             resetInput();
-            
+
             basketList.removeAll();
             orderList.clear();
-            
+
             priceInTotal.setText("0");
             totalPrice();
         }
@@ -439,45 +439,45 @@ public class CardboradUI extends javax.swing.JFrame {
             basketList.remove(index);
             orderList.remove(index);
             totalPrice();
-            
+
         }
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private boolean validInput() {
-        
+
         boolean lengthChecker, widthChecker, heightChecker, quantityChecker;
-        
-        //returns true if within range 
+
+        //returns true if within range
         lengthChecker = rangeChecker("Length", newLength, 0.1, 100);
         widthChecker = rangeChecker("Width", newWidth, 0.1, 100);
         heightChecker = rangeChecker("Height", newHeight, 0.1, 100);
         quantityChecker = rangeChecker("Quantity", quantity, 0.1, 100);
-        
+
         return(lengthChecker & widthChecker & heightChecker & quantityChecker);
     }
-    
+
     private boolean rangeChecker(String name, double testValue, double min, double max) {
-        
+
         String errorMsg = name + " ";
         if (testValue < min) {
             errorMsg += "is too small. Must be at least " + min;
-            
+
         } else if (testValue > max) {
             errorMsg += "is too big. Must be less than " + max;
         } else {
             return true;
         }
-        
+
         //display message
         msg(errorMsg);
         return false;
     }
-    
+
     private void totalPrice() {
 
         total = 0;
 
-        //each cardboard in list add price 
+        //each cardboard in list add price
         for (OrderCardboard xOrder : orderList) {
             total += xOrder.getOrderPrice();
         }
@@ -488,14 +488,14 @@ public class CardboradUI extends javax.swing.JFrame {
     }
 
     private void addToBasket() {
-        
+
         newOrder = new OrderCardboard(currentCardboard, quantity);
         orderList.add(newOrder);
 
         //updateTotal();
         String firstItem;                                                               //list the item
         firstItem = ("Type:" + typeOfCardboard + " " + newOrder.valuesToString());
-        basketList.add(firstItem);                                                      //add to the list 
+        basketList.add(firstItem);                                                      //add to the list
         resetInput();
     }
 
@@ -621,7 +621,7 @@ public class CardboradUI extends javax.swing.JFrame {
         noColour.setSelected(true);
     }
 
-    private void groupRadioButton() {
+    private void radioButton() {
         ButtonGroup group = new ButtonGroup();
         group.add(noColour);
         group.add(oneColour);
@@ -635,7 +635,7 @@ public class CardboradUI extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
