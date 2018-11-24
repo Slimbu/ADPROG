@@ -458,6 +458,7 @@ public class CardboradUI extends javax.swing.JFrame {
         quantityChecker = rangeChecker("Quantity", quantity, 0.1, 100);
 
         return(lengthChecker & widthChecker & heightChecker & quantityChecker);
+        
     }
 
     private boolean rangeChecker(String name, double testValue, double min, double max) {

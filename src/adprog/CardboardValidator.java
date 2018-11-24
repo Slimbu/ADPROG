@@ -7,57 +7,67 @@ package adprog;
 
 /**
  * Object to validate cardboard
+ *
  * @author pc
  */
 public class CardboardValidator {
-    
+
     /**
      * Creates a new object to validate cardboard
-     * 
-    */
-    public CardboardValidator() {}
-    
-    
+     *
+     */
+    public CardboardValidator() {
+    }
+
     /**
-     * Checks if options make a cardboard of a valid type 
+     * Checks if options make a cardboard of a valid type
+     *
      * @param grade
      * @param colour
      * @param reinforcedButtom
      * @param reinforcedCornor
      * @return type of cardboard as integer
-    */
-    
+     */
     public int check(int grade, int colour, boolean reinforcedButtom, boolean reinforcedCornor) {
         if (reinforcedCornor) {
-            if (check5(grade, colour, reinforcedButtom))
+            if (check5(grade, colour, reinforcedButtom)) {
                 return 5;
+            }
         } else if (reinforcedButtom) {
-            if (check4(grade, colour))
+            if (check4(grade, colour)) {
                 return 4;
+            }
         } else if (colour == 2) {
-            if (grade >= 2 && grade <= 5)
+            if (grade >= 2 && grade <= 5) {
                 return 3;
+            }
         } else if (colour == 1) {
-            if (grade >= 2 && grade <= 4)
+            if (grade >= 2 && grade <= 4) {
                 return 2;
+            }
         } else if (colour == 0) {
-            if (grade >= 1 && grade <= 3)
+            if (grade >= 1 && grade <= 3) {
                 return 1;
+            }
         }
         return 0;
     }
-    
+
     private boolean check5(int grade, int colours, boolean reinforcedButtom) {
-        if (!reinforcedButtom)
+        if (!reinforcedButtom) {
             return false;
-        if (colours != 2)
+        }
+        if (colours != 2) {
             return false;
+        }
         return (grade >= 3 && grade <= 5);
-    } 
-    
+    }
+
     private boolean check4(int grade, int colour) {
-        if (colour != 2)
+        if (colour != 2) {
             return false;
+        }
         return (grade >= 2 && grade <= 5);
-    } 
+    }
+
 }
