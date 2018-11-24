@@ -40,9 +40,13 @@ public class CardboradUI extends javax.swing.JFrame {
      *
      */
     public CardboradUI() {
+        
         initComponents();
         radioButton();
 
+        //icon 
+        ImageIcon img = new ImageIcon("cardboardBox.png");
+        setIconImage(img.getImage());
     }
 
     /**
