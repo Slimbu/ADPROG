@@ -2,6 +2,7 @@
  * 
  * @author @UP811334
  */
+
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.JDialog;
@@ -15,15 +16,16 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 
 /**
+ * 
  * Main UI Class
- *
- * @author @UP811334
  */
+
 public class CardboradUI extends javax.swing.JFrame {
 
     /**
      * 
      */
+    
     private final ArrayList<OrderCardboard> orderList = new ArrayList<>();
     private double total, newLength, newWidth, newHeight;
     private String cost;
@@ -36,6 +38,7 @@ public class CardboradUI extends javax.swing.JFrame {
     /**
      * Creates new form CardboradUI
      */
+    
     public CardboradUI() {
         
         initComponents();

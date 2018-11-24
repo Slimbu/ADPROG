@@ -1,8 +1,8 @@
 /**
- * Type 2 cardboard
  * 
  * @author @UP811334
  */
+
 public class CardboardTypeII extends NewCardboard {
     
     /**

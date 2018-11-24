@@ -1,5 +1,4 @@
 /**
- * Object to validate cardboard
  *
  * @author @UP811334
  */
@@ -9,6 +8,7 @@ public class CardboardValidator {
      * Creates a new object to validate cardboard
      *
      */
+    
     public CardboardValidator() {
     }
 
@@ -21,6 +21,7 @@ public class CardboardValidator {
      * @param reinforcedCornor
      * @return type of cardboard as integer
      */
+    
     public int check(int grade, int colour, boolean reinforcedButtom, boolean reinforcedCornor) {
         if (reinforcedCornor) {
             if (check5(grade, colour, reinforcedButtom)) {

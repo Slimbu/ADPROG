@@ -1,9 +1,8 @@
 /**
- * Abstract cardboard object
- * Superclass for all cardboard
  * 
  * @author UP811334
  */
+
 public abstract class NewCardboard {
 
     private final double cardboardLength;
@@ -30,7 +29,7 @@ public abstract class NewCardboard {
      * @param reinforcedBottom cardboard reinforced bottom
      * @param reinforcedCornor cardboard reinforced cornor
      * @param sealableTop cardboard sealable top
-     */
+     */ 
     public NewCardboard (double length, double width, double height, int grade, int colour, boolean reinforcedBottom, boolean reinforcedCornor, boolean sealableTop) {
         cardboardLength = length;
         cardboardWidth = width;

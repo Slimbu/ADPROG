@@ -1,9 +1,13 @@
 /**
- * Order containing cardboard and quantity
  *
  * @author @UP811334
  */
 import java.text.DecimalFormat;
+
+/**
+ * 
+ * Order containing cardboard and quantity
+ */
 
 public class OrderCardboard {
 
